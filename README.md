@@ -1,2 +1,2 @@
-# fadzli-portfolio
+# fadzli-CV
 Mahasiswa Binus
