@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhammad Fadzli Nur Arrafi — UI/UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13151a;
+    --paper:#f7f4ee;
+    --paper-dim:#ece7db;
+    --amber:#c98a2e;
+    --teal:#2f6e68;
+    --line:rgba(19,21,26,0.14);
+    --max:860px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif; margin:0; font-weight:600;}
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,244,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px;}
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem;}
+  .navlinks{display:flex; gap:22px; font-size:0.92rem;}
+  .navlinks a{text-decoration:none; opacity:0.75;}
+  .navlinks a:hover{opacity:1;}
+  .navtoggle{display:none; background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--ink);}
+
+  /* HERO */
+  header.hero{padding:72px 0 56px; border-bottom:1px solid var(--line);}
+  .hero-grid{display:grid; grid-template-columns:1fr auto; gap:40px; align-items:start;}
+  .hero-photo{width:168px; height:168px; border-radius:6px; overflow:hidden; border:1px solid var(--line); flex-shrink:0;}
+  .hero-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  @media(max-width:640px){
+    .hero-grid{grid-template-columns:1fr; gap:24px;}
+    .hero-photo{order:-1; width:104px; height:104px;}
+  }
+  .kicker{font-size:0.95rem; color:var(--teal); margin-bottom:14px;}
+  .hero h1{font-size:clamp(2.1rem, 5vw, 3.1rem); line-height:1.08; max-width:11ch;}
+  .hero p.lede{max-width:52ch; margin-top:18px; font-size:1.05rem; color:#3a3d44;}
+  .hero-actions{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px; border-radius:3px; font-size:0.92rem; font-weight:600;
+    text-decoration:none; border:1px solid var(--ink);
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-solid:hover{background:#2a2d35;}
+  .btn-ghost{background:transparent; color:var(--ink);}
+  .btn-ghost:hover{background:var(--paper-dim);}
+  .contact-row{margin-top:22px; font-size:0.9rem; color:#55585f; display:flex; flex-wrap:wrap; gap:4px 18px;}
+
+  /* SECTION */
+  section{padding:48px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-label{font-size:0.82rem; color:var(--amber); letter-spacing:0.02em; margin-bottom:6px;}
+  section > .wrap > h2{font-size:1.6rem; margin-bottom:22px;}
+
+  /* EXPERIENCE */
+  .role{margin-bottom:28px;}
+  .role:last-child{margin-bottom:0;}
+  .role-head{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline;}
+  .role-head h3{font-size:1.08rem;}
+  .role-period{font-size:0.85rem; color:#6b6e75; white-space:nowrap;}
+  .role ul{margin:10px 0 0; padding-left:18px;}
+  .role li{margin-bottom:6px; color:#3a3d44; font-size:0.96rem;}
+
+  /* GRID TWO COL */
+  .twocol{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  @media(max-width:640px){.twocol{grid-template-columns:1fr;}}
+
+  /* ACHIEVEMENTS LIST */
+  .ach{border-top:1px solid var(--line); padding:16px 0;}
+  .ach:first-of-type{border-top:none; padding-top:0;}
+  .ach-head{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .ach-head strong{font-size:0.98rem;}
+  .ach-tag{font-size:0.78rem; color:var(--teal); border:1px solid var(--teal); border-radius:20px; padding:2px 10px; white-space:nowrap; height:fit-content;}
+  .ach-sub{font-size:0.88rem; color:#6b6e75; margin-top:3px;}
+
+  /* SIMPLE LIST */
+  ul.plain{list-style:none; margin:0; padding:0;}
+  ul.plain li{padding:8px 0; border-top:1px solid var(--line); font-size:0.95rem; color:#3a3d44;}
+  ul.plain li:first-child{border-top:none;}
+  ul.plain .tag{font-size:0.78rem; color:#8a8d94;}
+
+  /* SKILLS */
+  .skillgroup h4{font-size:0.88rem; color:#6b6e75; font-weight:600; margin-bottom:10px;}
+  .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;}
+  .pill{font-size:0.86rem; padding:6px 13px; background:var(--paper-dim); border-radius:20px;}
+
+  /* FOOTER */
+  footer{padding:40px 0 60px;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.86rem; color:#6b6e75;}
+
+  @media(max-width:640px){
+    .navlinks{position:fixed; top:54px; left:0; right:0; background:var(--paper); flex-direction:column; padding:14px 24px; border-bottom:1px solid var(--line); display:none;}
+    .navlinks.open{display:flex;}
+    .navtoggle{display:block;}
+    .role-head, .ach-head{flex-direction:column; gap:4px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Fadzli Arrafi</div>
+    <button class="navtoggle" id="navToggle" aria-label="Menu">☰</button>
+    <div class="navlinks" id="navLinks">
+      <a href="#about">Tentang</a>
+      <a href="#experience">Pengalaman</a>
+      <a href="#achievements">Pencapaian</a>
+      <a href="#organizations">Organisasi</a>
+      <a href="#skills">Keahlian</a>
+      <a href="#contact">Kontak</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">UI/UX Designer — Jakarta, Indonesia</div>
+        <h1>Muhammad Fadzli Nur Arrafi</h1>
+        <p class="lede">Mahasiswa Business Information Technology di BINUS University yang merancang antarmuka digital berbasis riset pengguna, dengan pengalaman langsung mengelola usaha keluarga sejak 2022.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="CV-Muhammad-Fadzli-Nur-Arrafi.pdf" target="_blank" rel="noopener">Lihat CV</a>
+          <a class="btn btn-ghost" href="#contact">Hubungi Saya</a>
+        </div>
+        <div class="contact-row">
+          <span>fadzli.noer@gmail.com</span>
+          <span>081389025502</span>
+          <span>Rawamangun, Jakarta Timur</span>
+        </div>
+      </div>
+      <div class="hero-photo"><img src="fadzli-photo.png" alt="Muhammad Fadzli Nur Arrafi"></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-label">Tentang</div>
+    <h2>Profil</h2>
+    <p style="max-width:62ch; color:#3a3d44;">Fokus pada UI/UX Design dan telah meraih Juara 1 nasional dalam kompetisi desain. Selain aktif merancang di Figma, turut terlibat langsung dalam operasional usaha keluarga sejak 2022 — mulai dari logistik, pelayanan toko, hingga penjualan langsung ke pelanggan. Pengalaman ini membentuk pemahaman praktis terhadap kebutuhan dan perilaku pengguna, yang mendukung pendekatan desain berbasis riset dan problem-solving nyata.</p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-label">Rekam Jejak</div>
+    <h2>Pengalaman Kerja</h2>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>Pengelola Operasional — Usaha Keluarga (Kuliner)</h3>
+        <span class="role-period">2022 — Sekarang</span>
+      </div>
+      <ul>
+        <li>Terlibat dalam operasional harian bisnis kuliner keluarga, mulai dari berjualan di bazar (termasuk GBK) hingga kini mengelola cabang toko kontainer di Pulomas</li>
+        <li>Menangani logistik, operasional toko, hingga penjualan langsung ke pelanggan</li>
+        <li>Turun langsung membantu operasional di hari-hari ramai, termasuk pengantaran barang ke lokasi</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>Staf Operasional — Usaha Jeruk Peras</h3>
+        <span class="role-period">2023 · 1 bulan</span>
+      </div>
+      <ul>
+        <li>Membantu operasional penjualan jeruk peras milik keluarga, menangani proses produksi dan pelayanan langsung ke pelanggan</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="wrap">
+    <div class="section-label">Pencapaian</div>
+    <h2>Penghargaan & Kompetisi</h2>
+
+    <div class="ach">
+      <div class="ach-head"><strong>Juara 1 — RADIUS UI/UX Competition (Nasional)</strong><span class="ach-tag">Mar 2026</span></div>
+      <div class="ach-sub">Diselenggarakan oleh Himpunan Mahasiswa Sistem Informasi, Universitas Muhammadiyah Riau</div>
+    </div>
+    <div class="ach">
+      <div class="ach-head"><strong>10th Place — INFORNATION 2026 UI/UX Design Competition</strong><span class="ach-tag">Jul 2026</span></div>
+      <div class="ach-sub">HMIF Universitas Mataram · berkompetisi sebagai tim, skor akhir 81.668, peringkat 10</div>
+    </div>
+    <div class="ach">
+      <div class="ach-head"><strong>Peserta — BCA Business Case Competition (BBCC)</strong><span class="ach-tag">Agu 2026</span></div>
+      <div class="ach-sub">Menyusun studi kasus strategi bisnis PT Bank Central Asia Tbk terkait ekspansi ke sektor ekonomi kreatif</div>
+    </div>
+    <div class="ach">
+      <div class="ach-head"><strong>Peserta — ISFEST UI/UX Competition</strong><span class="ach-tag">Sep 2026</span></div>
+      <div class="ach-sub">Information Systems Festival, diselenggarakan oleh HIMSI Universitas Multimedia Nusantara</div>
+    </div>
+    <div class="ach">
+      <div class="ach-head"><strong>Juara 1 Junior Kata Perorangan Putra — Karate</strong><span class="ach-tag">Nov 2023</span></div>
+      <div class="ach-sub">Karate Festival PRIME Student's Open Championship, diselenggarakan oleh FORKI</div>
+    </div>
+  </div>
+</section>
+
+<section id="organizations">
+  <div class="wrap">
+    <div class="section-label">Kontribusi</div>
+    <h2>Organisasi & Kegiatan Sosial</h2>
+    <div class="twocol">
+      <div>
+        <h4 style="font-size:0.88rem; color:#6b6e75; margin-bottom:10px;">Kegiatan Kampus</h4>
+        <ul class="plain">
+          <li>Anggota UKM Badminton, BINUS University</li>
+          <li>Volunteer Bersih-Bersih Kampus, BINUS University</li>
+          <li>TechnoScape 2026 — Fintech Innovators, BNCC</li>
+          <li>Workshop Teach For Good: AI and Data, HIMSISFO</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.88rem; color:#6b6e75; margin-bottom:10px;">Pengabdian Sosial</h4>
+        <ul class="plain">
+          <li>Pengajaran & sosialisasi untuk anak-anak, Panti Asuhan Jatiasih</li>
+          <li>Presentasi SDG 16 di salah satu SMK, Bekasi</li>
+          <li>Sosialisasi Kesetaraan Gender kepada Siswa SMA <span class="tag">· 2025</span></li>
+          <li>Dampak Aksi Kolektif terhadap Akses Air Bersih <span class="tag">· 2025</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-label">Kemampuan</div>
+    <h2>Keahlian & Bahasa</h2>
+
+    <div class="skillgroup">
+      <h4>Desain</h4>
+      <div class="pillrow">
+        <span class="pill">Figma — Wireframing</span>
+        <span class="pill">Prototyping</span>
+        <span class="pill">Design System</span>
+      </div>
+    </div>
+    <div class="skillgroup">
+      <h4>Data & Produktivitas</h4>
+      <div class="pillrow">
+        <span class="pill">Excel — Pivot Table</span>
+        <span class="pill">VLOOKUP / INDEX-MATCH</span>
+        <span class="pill">VBA Macro</span>
+        <span class="pill">Orange</span>
+        <span class="pill">Trello</span>
+      </div>
+    </div>
+    <div class="skillgroup">
+      <h4>Dasar Pemrograman</h4>
+      <div class="pillrow">
+        <span class="pill">HTML/CSS</span>
+        <span class="pill">JavaScript</span>
+        <span class="pill">C++</span>
+      </div>
+    </div>
+    <div class="skillgroup">
+      <h4>Bahasa</h4>
+      <div class="pillrow">
+        <span class="pill">Indonesia — Native</span>
+        <span class="pill">Inggris — CEFR B2.2 (Beelingua, BINUS)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span>© 2026 Muhammad Fadzli Nur Arrafi</span>
+    <span>fadzli.noer@gmail.com · 081389025502 · Rawamangun, Jakarta Timur</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.navlinks a').forEach(function(a){
+    a.addEventListener('click', function(){ document.getElementById('navLinks').classList.remove('open'); });
+  });
+</script>
+
+</body>
+</html>
